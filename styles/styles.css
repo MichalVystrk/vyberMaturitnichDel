@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+}
+
+.bg-matny {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px); /* adds blur effect */
+    -webkit-backdrop-filter: blur(3px); /* for Safari */
+}
+
+/* navbar */
+
+.navbar {
+    transition: transform 0.3s ease-in-out;
+    background-color: #4E56C0;
+}
+
+.navbar-hide {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    position: fixed; /* navbar musí být pevně umístěný */
+    width: 100%;
+    z-index: 1030; /* aby byl nad obsahem */
+}
+
+.navbar-logo {
+    width: 40px;                 /* uprav podle potřeby: 32–48px */
+    height: 45px;
+    object-fit: cover;           /* ořízne pokud není přesné proporce */
+    padding: 2px;                /* mezera kolem loga */
+    transition: transform .18s ease, box-shadow .18s ease;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+
+.navbar-brand {
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
