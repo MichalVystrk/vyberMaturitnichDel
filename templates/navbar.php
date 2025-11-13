@@ -1,6 +1,6 @@
 <?php
 echo '
-<nav class="navbar navbar-light fixed-top navbar-expand-lg bg-primary">
+<nav class="navbar navbar-dark fixed-top navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
      <img src="./images/logoKniha.png" alt="logo" class="navbar-logo">

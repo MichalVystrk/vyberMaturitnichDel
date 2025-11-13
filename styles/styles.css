@@ -1,21 +1,23 @@
+/* import Roboto Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary: #272727;
+    --secondary: #4b5ea3;
+    --text-color: #F1FFFA;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: white;
-}
-
-.bg-matny {
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3px); /* adds blur effect */
-    -webkit-backdrop-filter: blur(3px); /* for Safari */
+    background-color: var(--secondary);
 }
 
 /* navbar */
 
 .navbar {
     transition: transform 0.3s ease-in-out;
-    background-color: #4E56C0;
+    background-color: color-mix(in srgb, var(--primary) 85%, transparent);
+    backdrop-filter: blur(6px);
 }
 
 .navbar-hide {
