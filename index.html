@@ -414,7 +414,7 @@
                     
                     <div class="summary-item">
                         <span>Celkový počet děl:</span>
-                        <strong id="totalCount">0 / 4</strong>
+                        <strong id="totalCount">0 / 20</strong>
                     </div>
                     
                     <div class="summary-item">
@@ -596,7 +596,7 @@
 
             // Aktualizace počítadel
             document.getElementById('selectedCount').textContent = `Vybráno: ${checkboxes.length}`;
-            document.getElementById('totalCount').textContent = `${checkboxes.length} / 4`;
+            document.getElementById('totalCount').textContent = `${checkboxes.length} / 20`;
             document.getElementById('prosaCount').textContent = `${prosCount} / 2`;
             document.getElementById('poesieCount').textContent = `${poesCount} / 2`;
             document.getElementById('dramaCount').textContent = `${dramaCount} / 2`;
@@ -628,7 +628,7 @@
 
         function updateSubmitButton(total, pros, poes, drama, authorValid) {
             const submitBtn = document.getElementById('submitBtn');
-            const isValid = total === 4 && pros >= 2 && poes >= 2 && drama >= 2 && authorValid;
+            const isValid = total === 20 && pros >= 2 && poes >= 2 && drama >= 2 && authorValid;
             
             submitBtn.disabled = !isValid;
             
@@ -645,8 +645,8 @@
             e.preventDefault();
             
             const checkboxes = this.querySelectorAll('input[type="checkbox"]:checked');
-            if (checkboxes.length === 0) {
-                showMessage('Vyberte alespoň 4 díla', 'error');
+            if (checkboxes.length !== 20) {
+                showMessage('Musíte vybrat přesně 20 děl!', 'error');
                 return;
             }
 
