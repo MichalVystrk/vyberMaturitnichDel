@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="cs" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výběr Maturitních Děl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --border-color: #334155;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f35 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, var(--bg-card) 0%, #1a2332 100%);
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .container-main {
+            max-width: 1200px;
+            padding: 2rem 1rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-section p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+
+        .category-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-icon {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .book-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .book-card:hover::before {
+            left: 100%;
+        }
+
+        .book-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .book-checkbox {
+            width: 1.3rem;
+            height: 1.3rem;
+            margin-right: 1rem;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .book-info {
+            margin-left: 2.3rem;
+        }
+
+        .book-title {
+            font-weight: 600;
+            color: #f1f5f9;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .book-author {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-genre {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .genre-prose {
+            background: #3b82f6;
+        }
+
+        .genre-poetry {
+            background: #ec4899;
+        }
+
+        .genre-drama {
+            background: #f59e0b;
+        }
+
+        .selection-summary {
+            background: var(--bg-card);
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            position: sticky;
+            top: 1rem;
+        }
+
+        .summary-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: #cbd5e1;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-valid {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        .status-invalid {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .buttons-section {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-custom {
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-reset {
+            background: var(--border-color);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #475569;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ef4444;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            color: #86efac;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #22c55e;
+        }
+
+        .genre-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-box {
+            text-align: center;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .selection-summary {
+                position: static;
+            }
+
+            .category-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand">📚 Maturitní Díla</span>
+            <span class="ms-auto text-muted" id="selectedCount">Vybráno: 0</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-main">
+        <div class="header-section">
+            <h1>Výběr Maturitních Děl</h1>
+            <p>Vyberte si literatura na základě zadaných kritérií</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <form id="bookForm" method="POST" action="">
+                    <!-- Category 1: Světová a česká literatura do konce 18. století -->
+                    <div class="category-section">
+                        <div class="category-title">
+                            <div class="category-icon"></div>
+                            Světová a česká literatura do konce 18. století
+                        </div>
+                        <div class="books-grid" id="category1">
+                            <!-- Books will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Category 2: Světová a česká literatura 19. století -->
+                    <div class="category-section">
+                        <div class="category-title">
+                            <div class="category-icon"></div>
+                            Světová a česká literatura 19. století
+                        </div>
+                        <div class="books-grid" id="category2">
+                            <!-- Books will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Světová literatura 20. a 21. století -->
+                    <div class="category-section">
+                        <div class="category-title">
+                            <div class="category-icon"></div>
+                            Světová literatura 20. a 21. století
+                        </div>
+                        <div class="books-grid" id="category3">
+                            <!-- Books will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Category 4: Česká literatura 20. a 21. století -->
+                    <div class="category-section">
+                        <div class="category-title">
+                            <div class="category-icon"></div>
+                            Česká literatura 20. a 21. století
+                        </div>
+                        <div class="books-grid" id="category4">
+                            <!-- Books will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div id="messages"></div>
+
+                    <div class="buttons-section">
+                        <button type="submit" class="btn-custom btn-submit" id="submitBtn">Odeslat Výběr</button>
+                        <button type="reset" class="btn-custom btn-reset">Zrušit Výběr</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Summary Panel -->
+            <div class="col-lg-4">
+                <div class="selection-summary">
+                    <div class="summary-title">📊 Přehled Výběru</div>
+                    
+                    <div class="summary-item">
+                        <span>Celkový počet děl:</span>
+                        <strong id="totalCount">0 / 4</strong>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Próza:</span>
+                        <strong id="prosaCount">0 / 2</strong>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Poezie:</span>
+                        <strong id="poesieCount">0 / 2</strong>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Drama:</span>
+                        <strong id="dramaCount">0 / 2</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Max. 2 od autora:</span>
+                        <span class="status-badge" id="authorStatus" style="background: rgba(34, 197, 94, 0.2); color: #86efac;">✓ OK</span>
+                    </div>
+
+                    <div class="genre-stats">
+                        <div class="stat-box">
+                            <div class="stat-label">Próza</div>
+                            <div class="stat-value" id="prosaStat">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Poezie</div>
+                            <div class="stat-value" id="poesieStat">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Drama</div>
+                            <div class="stat-value" id="dramaStat">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Data - Cvičná data (snadno zaměnitelná)
+        const books = {
+            category1: [
+                { id: 1, author: 'William Shakespeare', title: 'Hamlet', genre: 'drama' },
+                { id: 2, author: 'Miguel de Cervantes', title: 'Don Quixote', genre: 'próza' },
+                { id: 3, author: 'Johann Wolfgang von Goethe', title: 'Faust', genre: 'drama' },
+                { id: 4, author: 'Daniel Defoe', title: 'Robinson Crusoe', genre: 'próza' },
+                { id: 5, author: 'Jonathan Swift', title: 'Gulliverovy cesty', genre: 'próza' },
+                { id: 6, author: 'Kliment Gottwald', title: 'Český kníže Václav', genre: 'poetry' },
+                { id: 7, author: 'František Přemysl Šulc', title: 'Cestopis československého žáka', genre: 'próza' },
+                { id: 8, author: 'Václav Kliment Klicpera', title: 'Hadrián z Římstalů', genre: 'drama' },
+                { id: 9, author: 'Jean Racine', title: 'Faidra', genre: 'drama' },
+                { id: 10, author: 'Ludvig Holberg', title: 'Ján Křestitel', genre: 'drama' }
+            ],
+            category2: [
+                { id: 11, author: 'Jane Austen', title: 'Pýcha a předsudek', genre: 'próza' },
+                { id: 12, author: 'Charlotte Brontë', title: 'Jane Eyrová', genre: 'próza' },
+                { id: 13, author: 'Charles Dickens', title: 'Oliver Twist', genre: 'próza' },
+                { id: 14, author: 'Gustave Flaubert', title: 'Paní Bovaryová', genre: 'próza' },
+                { id: 15, author: 'Victor Hugo', title: 'Chrám Notre-Dame', genre: 'próza' },
+                { id: 16, author: 'Alexander Dumas', title: 'Hrabě Monte Christo', genre: 'próza' },
+                { id: 17, author: 'Honoré de Balzac', title: 'Otec Goriot', genre: 'próza' },
+                { id: 18, author: 'Jaroslav Hašek', title: 'Osudy dobrého vojáka Švejka', genre: 'próza' },
+                { id: 19, author: 'Karel Čapek', title: 'Krakatit', genre: 'próza' },
+                { id: 20, author: 'Božena Němcová', title: 'Babička', genre: 'próza' },
+                { id: 21, author: 'Smetana', title: 'Kde domov můj', genre: 'poetry' },
+                { id: 22, author: 'Petr Bezruč', title: 'Slezské písně', genre: 'poetry' }
+            ],
+            category3: [
+                { id: 23, author: 'George Orwell', title: '1984', genre: 'próza' },
+                { id: 24, author: 'Franz Kafka', title: 'Proces', genre: 'próza' },
+                { id: 25, author: 'Albert Camus', title: 'Cizinec', genre: 'próza' },
+                { id: 26, author: 'Ernest Hemingway', title: 'Stařec a moře', genre: 'próza' },
+                { id: 27, author: 'J.D. Salinger', title: 'Muž, který chytá v žitě', genre: 'próza' },
+                { id: 28, author: 'William Faulkner', title: 'Mientras agonizo', genre: 'próza' },
+                { id: 29, author: 'Ray Bradbury', title: 'Ilustrovaný muž', genre: 'próza' },
+                { id: 30, author: 'Samuel Beckett', title: 'Čekám na Godota', genre: 'drama' },
+                { id: 31, author: 'Tennessee Williams', title: 'Tramvaj do stanice touha', genre: 'drama' },
+                { id: 32, author: 'Arthur Miller', title: 'Prodej smrti', genre: 'drama' }
+            ],
+            category4: [
+                { id: 33, author: 'Bohumil Hrabal', title: 'Příliš hlučná samota', genre: 'próza' },
+                { id: 34, author: 'Milan Kundera', title: 'Nesnesitelná lehkost bytí', genre: 'próza' },
+                { id: 35, author: 'Václav Havel', title: 'Audience', genre: 'drama' },
+                { id: 36, author: 'Ivan Klíma', title: 'Můj zlatý řemeslo', genre: 'próza' },
+                { id: 37, author: 'Darina Gabzdilová', title: 'Nebeské bílé město', genre: 'próza' },
+                { id: 38, author: 'Vladimír Holan', title: 'Noc s Hamletem', genre: 'poetry' },
+                { id: 39, author: 'Miroslav Holub', title: 'Anděl na kolečkách', genre: 'poetry' },
+                { id: 40, author: 'Josef Kajetán Tyl', title: 'Fidlovačka', genre: 'drama' }
+            ]
+        };
+
+        // Mapping kategorií
+        const categoryMap = {
+            1: 'category1',
+            2: 'category2',
+            3: 'category3',
+            4: 'category4'
+        };
+
+        // Inicializace aplikace
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBooks();
+            updateSummary();
+        });
+
+        function loadBooks() {
+            for (const [catNum, catId] of Object.entries(categoryMap)) {
+                const container = document.getElementById(catId);
+                const categoryBooks = books[catId];
+                
+                categoryBooks.forEach(book => {
+                    const bookCard = createBookCard(book);
+                    container.appendChild(bookCard);
+                });
+            }
+        }
+
+        function createBookCard(book) {
+            const card = document.createElement('div');
+            card.className = 'book-card';
+            card.dataset.bookId = book.id;
+            
+            const genreClass = book.genre === 'próza' ? 'genre-prose' : 
+                               book.genre === 'poetry' ? 'genre-poetry' : 'genre-drama';
+            
+            const genreLabel = book.genre === 'poetry' ? 'Poezie' : 
+                               book.genre === 'drama' ? 'Drama' : 'Próza';
+
+            card.innerHTML = `
+                <label style="display: flex; align-items: flex-start; cursor: pointer; margin: 0;">
+                    <input 
+                        type="checkbox" 
+                        name="books[]" 
+                        value="${book.id}" 
+                        class="book-checkbox"
+                        data-author="${book.author}"
+                        data-genre="${book.genre}"
+                        onchange="updateSummary()"
+                    >
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">${book.author}</div>
+                        <span class="book-genre ${genreClass}">${genreLabel}</span>
+                    </div>
+                </label>
+            `;
+
+            return card;
+        }
+
+        function updateSummary() {
+            const form = document.getElementById('bookForm');
+            const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+            
+            // Počítání žánrů
+            let prosCount = 0, poesCount = 0, dramaCount = 0;
+            let selectedBooks = [];
+            const authorCounts = {};
+            
+            checkboxes.forEach(checkbox => {
+                const genre = checkbox.dataset.genre;
+                const author = checkbox.dataset.author;
+                
+                if (genre === 'próza') prosCount++;
+                else if (genre === 'poetry') poesCount++;
+                else if (genre === 'drama') dramaCount++;
+                
+                authorCounts[author] = (authorCounts[author] || 0) + 1;
+                selectedBooks.push({
+                    id: checkbox.value,
+                    author: author,
+                    genre: genre
+                });
+            });
+
+            // Aktualizace počítadel
+            document.getElementById('selectedCount').textContent = `Vybráno: ${checkboxes.length}`;
+            document.getElementById('totalCount').textContent = `${checkboxes.length} / 4`;
+            document.getElementById('prosaCount').textContent = `${prosCount} / 2`;
+            document.getElementById('poesieCount').textContent = `${poesCount} / 2`;
+            document.getElementById('dramaCount').textContent = `${dramaCount} / 2`;
+            document.getElementById('prosaStat').textContent = prosCount;
+            document.getElementById('poesieStat').textContent = poesCount;
+            document.getElementById('dramaStat').textContent = dramaCount;
+
+            // Kontrola autorů
+            let authorValid = true;
+            for (const count of Object.values(authorCounts)) {
+                if (count > 2) {
+                    authorValid = false;
+                    break;
+                }
+            }
+
+            const authorStatus = document.getElementById('authorStatus');
+            if (authorValid) {
+                authorStatus.textContent = '✓ OK';
+                authorStatus.className = 'status-badge status-valid';
+            } else {
+                authorStatus.textContent = '✗ Chyba';
+                authorStatus.className = 'status-badge status-invalid';
+            }
+
+            // Kontrola tlačítka odeslání
+            updateSubmitButton(checkboxes.length, prosCount, poesCount, dramaCount, authorValid);
+        }
+
+        function updateSubmitButton(total, pros, poes, drama, authorValid) {
+            const submitBtn = document.getElementById('submitBtn');
+            const isValid = total === 4 && pros >= 2 && poes >= 2 && drama >= 2 && authorValid;
+            
+            submitBtn.disabled = !isValid;
+            
+            if (isValid) {
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+            } else {
+                submitBtn.style.opacity = '0.5';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        document.getElementById('bookForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const checkboxes = this.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkboxes.length === 0) {
+                showMessage('Vyberte alespoň 4 díla', 'error');
+                return;
+            }
+
+            let selectedList = '<ul style="margin: 10px 0; padding-left: 20px;">';
+            checkboxes.forEach(checkbox => {
+                const bookId = checkbox.value;
+                let bookTitle = '', bookAuthor = '';
+                
+                for (const category of Object.values(books)) {
+                    const book = category.find(b => b.id == bookId);
+                    if (book) {
+                        bookTitle = book.title;
+                        bookAuthor = book.author;
+                        break;
+                    }
+                }
+                
+                selectedList += `<li><strong>${bookTitle}</strong> - ${bookAuthor}</li>`;
+            });
+            selectedList += '</ul>';
+
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = `
+                <div class="success-message">
+                    <strong>✓ Výběr byl úspěšně odeslán!</strong>
+                    <p style="margin: 10px 0;">Vaše vybraná díla:</p>
+                    ${selectedList}
+                </div>
+            `;
+            
+            // Scroll na zprávu
+            messagesDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function showMessage(msg, type) {
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = `<div class="error-message">${msg}</div>`;
+        }
+
+        // Reset form
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            updateSummary();
+            document.getElementById('messages').innerHTML = '';
+        });
+    </script>
+</body>
+</html>
