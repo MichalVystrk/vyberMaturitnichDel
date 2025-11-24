@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    --bg-dark: #0f172a;
+    --bg-dark2: #1a1f35;
+    --bg-card: #1e293b;
+    --border-color: #334155;
+    --text-color: #e0edff
+}
+
+.navbar {
+    color: var(--secondary-color);
+    background-color: var(--bg-dark);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-text {
+    color: var(--secondary-color) !important;
+    transition: transform 0.3s ease;
+}
+
+.navbar,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+    color: var(--primary-color) !important;
+    ;
+}
+
+.nav-link {
+    width: max-content;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.nav-link:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+
+body {
+    background: linear-gradient(120deg, var(--bg-dark) 0%, var(--bg-dark2) 100%);
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.container-main {
+    width: 100vw;
+    padding: 3rem;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 0.6s ease-in;
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color) 30%, var(--secondary-color) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-section p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.category-section {
+    margin-bottom: 2.5rem;
+}
+
+.category-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-icon {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 100%;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.book-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
