@@ -1,5 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+
+:root {
+    --primary-color: #FFC72C;
+
+   
+    --bg-dark: #0b0b0d;
+    --bg-dark2: #1f1f23;
+    --bg-dark3: #2c2c30;
+
+    --secondary-color: #F4D35E; 
+    --accent-color: #FFB84D;
+    --bg-card: #222226;
+    --border-color: rgba(255,199,44,0.12);
+    --text-color: #EDF2F7;
+}
+/*
+
+:root {
+    --primary-color: #F7374F;
+    --secondary-color: #f65e71;
+    --accent-color: #ff001e;
+    --bg-dark: #0e0d0d;
+    --bg-dark2: #2C2C2C;
+    --bg-card: #88304E;
+    --border-color: #d85f6e;
+    --text-color: #e0edff
+} 
+ :root {
+    --primary-color: #D8A25E;
+    --secondary-color: #f1e999;
+    --accent-color: #A04747;
+    --bg-dark: #0e0d0d;
+    --bg-dark2: #272121;
+    --bg-card: #3a2e2e;
+    --border-color: #a17a7a;
+    --text-color: #e0edff
+}
+
 :root {
     --primary-color: #4f46e5;
     --secondary-color: #8b5cf6;
@@ -9,7 +48,7 @@
     --bg-card: #1e293b;
     --border-color: #334155;
     --text-color: #e0edff
-}
+} */
 
 .navbar {
     color: var(--secondary-color);
@@ -118,4 +157,235 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+}
+
+.book-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 184, 77, 0.05), transparent);
+    transition: 0.5s ease;
+}
+
+.book-card:hover::before {
+    left: 100%;
+}
+
+.book-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 16px rgba(255, 184, 77, 0.2);
+    transform: translateY(-6px); /* posune kartu lehce nahoru*/
+}
+
+.book-checkbox {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.book-info {
+    margin-left: 2.3rem;
+}
+
+.book-title {
+    font-weight: 600;
+    color: #f1f5f9;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.book-author {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-genre {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.genre-prose {
+    background: #3b82f6;
+}
+
+.genre-poetry {
+    background: #2bb52f;
+}
+
+.genre-drama {
+    background: #f50b80;
+}
+
+.selection-summary {
+    background: var(--bg-card);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem 0;
+    position: sticky;
+    top: 1rem;
+}
+
+.summary-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border-color);
+    color: #cbd5e1;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-valid {
+    background: rgba(34, 197, 94, 0.2);
+    color: #86efac;
+}
+
+.status-invalid {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+}
+
+.buttons-section {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-custom {
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+}
+
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-reset {
+    background: var(--border-color);
+    color: white;
+}
+
+.btn-reset:hover {
+    background: #475569;
+}
+
+.error-message {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #ef4444;
+}
+
+.success-message {
+    background: rgba(34, 197, 94, 0.1);
+    color: #86efac;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #22c55e;
+}
+
+.genre-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-box {
+    text-align: center;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .selection-summary {
+        position: static;
+    }
+
+    .category-title {
+        font-size: 1.1rem;
+    }
 }
