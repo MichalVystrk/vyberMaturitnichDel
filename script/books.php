@@ -6,7 +6,7 @@ $books = [
         ['id' => 3,  'author' => 'Johann Wolfgang von Goethe',        'title' => 'Faust',                               'genre' => 'drama'],
         ['id' => 4,  'author' => 'Daniel Defoe',                      'title' => 'Robinson Crusoe',                     'genre' => 'próza'],
         ['id' => 5,  'author' => 'Jonathan Swift',                    'title' => 'Gulliverovy cesty',                  'genre' => 'próza'],
-        ['id' => 6,  'author' => 'Kliment Gottwald',                  'title' => 'Český kníže Václav',                 'genre' => 'poetry'],
+        ['id' => 6,  'author' => 'Kliment Gottwald',                  'title' => 'Český kníže Václav',                 'genre' => 'poezie'],
         ['id' => 7,  'author' => 'František Přemysl Šulc',            'title' => 'Cestopis československého žáka',     'genre' => 'próza'],
         ['id' => 8,  'author' => 'Václav Kliment Klicpera',           'title' => 'Hadrián z Římstalů',                 'genre' => 'drama'],
         ['id' => 9,  'author' => 'Jean Racine',                       'title' => 'Faidra',                              'genre' => 'drama'],
@@ -18,7 +18,7 @@ $books = [
         ['id' => 43, 'author' => 'Miguel de Cervantes',                'title' => 'Novely a povídky',                   'genre' => 'próza'],
 
         // více děl stejných autorů
-        ['id' => 53, 'author' => 'William Shakespeare',                'title' => 'Sonety',                              'genre' => 'poetry'],
+        ['id' => 53, 'author' => 'William Shakespeare',                'title' => 'Sonety',                              'genre' => 'poezie'],
         ['id' => 54, 'author' => 'William Shakespeare',                'title' => 'Macbeth',                             'genre' => 'drama'],
         ['id' => 55, 'author' => 'Johann Wolfgang von Goethe',        'title' => 'Divoký lovec',                        'genre' => 'drama'],
     ],
@@ -33,8 +33,8 @@ $books = [
         ['id' => 18, 'author' => 'Jaroslav Hašek',                    'title' => 'Osudy dobrého vojáka Švejka',         'genre' => 'próza'],
         ['id' => 19, 'author' => 'Karel Čapek',                       'title' => 'Krakatit',                            'genre' => 'próza'],
         ['id' => 20, 'author' => 'Božena Němcová',                    'title' => 'Babička',                             'genre' => 'próza'],
-        ['id' => 21, 'author' => 'Smetana',                           'title' => 'Kde domov můj',                       'genre' => 'poetry'],
-        ['id' => 22, 'author' => 'Petr Bezruč',                       'title' => 'Slezské písně',                       'genre' => 'poetry'],
+        ['id' => 21, 'author' => 'Smetana',                           'title' => 'Kde domov můj',                       'genre' => 'poezie'],
+        ['id' => 22, 'author' => 'Petr Bezruč',                       'title' => 'Slezské písně',                       'genre' => 'poezie'],
 
         // additional items (duplicates / same authors)
         ['id' => 44, 'author' => 'Jane Austen',                       'title' => 'Rozum a cit',                         'genre' => 'próza'],
@@ -72,8 +72,8 @@ $books = [
         ['id' => 35, 'author' => 'Václav Havel',                      'title' => 'Audience',                            'genre' => 'drama'],
         ['id' => 36, 'author' => 'Ivan Klíma',                        'title' => 'Můj zlatý řemeslo',                   'genre' => 'próza'],
         ['id' => 37, 'author' => 'Darina Gabzdilová',                 'title' => 'Nebeské bílé město',                  'genre' => 'próza'],
-        ['id' => 38, 'author' => 'Vladimír Holan',                    'title' => 'Noc s Hamletem',                     'genre' => 'poetry'],
-        ['id' => 39, 'author' => 'Miroslav Holub',                    'title' => 'Anděl na kolečkách',                  'genre' => 'poetry'],
+        ['id' => 38, 'author' => 'Vladimír Holan',                    'title' => 'Noc s Hamletem',                     'genre' => 'poezie'],
+        ['id' => 39, 'author' => 'Miroslav Holub',                    'title' => 'Anděl na kolečkách',                  'genre' => 'poezie'],
         ['id' => 40, 'author' => 'Josef Kajetán Tyl',                 'title' => 'Fidlovačka',                          'genre' => 'drama'],
 
         // additional items

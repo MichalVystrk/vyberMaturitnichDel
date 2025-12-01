@@ -31,7 +31,7 @@ function generateBooks($category = null)
 		elseif ($genre === "próza") {
 			$bookGenreString = "<small class=\"book-genre genre-prose\">{$genre}</small></label></div>";
 		}
-		elseif ($genre === "poetry") {
+		elseif ($genre === "poezie") {
 			$bookGenreString = "<small class=\"book-genre genre-poetry\">{$genre}</small></label></div>";
 		}
 		else {

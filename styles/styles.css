@@ -5,7 +5,6 @@
 :root {
     --primary-color: #FFC72C;
 
-   
     --bg-dark: #0b0b0d;
     --bg-dark2: #1f1f23;
     --bg-dark3: #2c2c30;
@@ -69,6 +68,7 @@
 .navbar .nav-link:focus,
 .navbar .nav-link.active {
     color: var(--primary-color) !important;
+    
     ;
 }
 
@@ -322,7 +322,7 @@ body {
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
-    border-left: 4px solid #ef4444;
+    border-left: 4px solid #ff0000;
 }
 
 .success-message {
