@@ -86,22 +86,22 @@ echo'
 
 				<div class="summary-item">
 					<span>Literatura do 18. st.:</span>
-					<strong id="prosaCount">0 /  4</strong>
+					<strong id="18Count">0 /  2</strong>
 				</div>
 
 				<div class="summary-item">
 					<span>Literatura 19. st.:</span>
-					<strong id="poesieCount">0 / 4</strong>
+					<strong id="19Count">0 / 3</strong>
 				</div>
 
 				<div class="summary-item">
 					<span>Světová lit. 20. a 21. st.:</span>
-					<strong id="dramaCount">0 / 4</strong>
+					<strong id="s2021Count">0 / 4</strong>
 				</div>
 				
 				<div class="summary-item">
 					<span>Česká lit. 20. a 21. st.:</span>
-					<strong id="dramaCount">0 / 4</strong>
+					<strong id="c2021Count">0 / 5</strong>
 				</div>
 
 				<div class="summary-item">
@@ -117,7 +117,7 @@ echo'
 					</div>
 					<div class="stat-box">
 						<div class="stat-label">Poezie</div>
-						<div class="stat-value" id="poesieStat">0</div>
+						<div class="stat-value" id="poezieStat">0</div>
 					</div>
 					<div class="stat-box">
 						<div class="stat-label">Drama</div>

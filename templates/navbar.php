@@ -10,13 +10,13 @@ echo '
            <div class="collapse navbar-collapse" id="navbarText">
        	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" href="#">Úvod</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="echo.php">Výběr děl</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="login.php">Přihlášení</a>
         </li>
       </ul>
       <span class="navbar-text">

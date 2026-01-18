@@ -1,18 +1,5 @@
 <?php
 include("books.php");
-/**
- * Generate HTML blocks for categories from $books
- *
- * Usage:
- *   // all categories as associative array: ['category1' => '<div>...</div>', ...]
- *   $blocks = generateBooks();
- *
- *   // single category HTML string (or null if not found)
- *   $html = generateBooks('category1');
- *
- * The function does not echo by default — it returns strings so caller can place them
- * into specific containers (e.g. <div id="category1">).
- */
 function generateBooks($category = null)
 {
 	global $books;

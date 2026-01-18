@@ -1,7 +1,7 @@
 <?php
-$title = "změna";
+$title = "Přihlášení";
 require_once("script/functions.php");
 include("templates/head.php");
 include("templates/navbar.php");
-include("pages/index.php");
+include("pages/prihlaseni.php");
 include("templates/footer.php");
