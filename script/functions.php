@@ -1,7 +1,7 @@
 <?php
-function generateBooks($category = null)
+function generateBooks()
 {
-	
+
 }
 /*	global $books;
 
