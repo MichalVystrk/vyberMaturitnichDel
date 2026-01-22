@@ -1,8 +1,9 @@
 <?php
-include("books.php");
 function generateBooks($category = null)
 {
-	global $books;
+	
+}
+/*	global $books;
 
 	$renderItem = function ($item) {
 		$bookGenreString = "";
@@ -47,4 +48,5 @@ function generateBooks($category = null)
 	}
 
 	return $result;
-}
+*/
+

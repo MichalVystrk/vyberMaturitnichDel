@@ -1,5 +1,6 @@
 <?php
 $title = "změna";
+require_once("templates/config.php");
 require_once("script/functions.php");
 include("templates/head.php");
 include("templates/navbar.php");
